@@ -13,7 +13,9 @@ app.use(express.json());
 app.use('/member', memberRouter);
 app.use('/children', childrenRouter);
 app.use('/incomes', incomesRouter);
-app.use('/expenses', expensesRouter);
+app.use('/outcomes', outcomesRouter);
+app.use('/supports', supportsRouter);
+
 
 app.listen(8080, (err) => {
     if (err) console.error(err);
