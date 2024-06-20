@@ -10,6 +10,7 @@ const corsOptions = {
 const app = express();
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use('/users',userRouter)
 app.use('/member', memberRouter);
 app.use('/children', childrenRouter);
 app.use('/incomes', incomesRouter);
