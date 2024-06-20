@@ -1,6 +1,6 @@
 import { executeQuery } from './db.js';
 
-import {addQuery, verifyPasswordQuery,deleteQuery,updateQuery} from './queries.js'
+import {addQuery, verifyPasswordQuery, deleteQuery, updateQuery} from './queries.js'
 
 export class PasswordService {
 

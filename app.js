@@ -16,6 +16,9 @@ app.use('/children', childrenRouter);
 app.use('/incomes', incomesRouter);
 app.use('/outcomes', outcomesRouter);
 app.use('/supports', supportsRouter);
+app.use('/bankAccount', bankRouter);
+app.use('/property', propertyRouter);
+app.use('/debts', debtsRouter);
 
 
 app.listen(8080, (err) => {

@@ -15,7 +15,7 @@ export class IncomesController{
 
     }
     
-    async addOutcome(req, res) {
+    async addIncome(req, res) {
         try {
             const incomesService = new IncomesService();
             const result = await incomesService.addIncome(req.body);
@@ -27,10 +27,10 @@ export class IncomesController{
     }
 
     
-    async editOutcome(req, res) {
+    async editIncome(req, res) {
         try {
             const incomesService = new IncomesService();
-            await incomesService.editIncome(req.query.incomeId,req.body);
+            await incomesService.editIncome(req.query.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {
@@ -38,14 +38,4 @@ export class IncomesController{
         }
     }
 
-    async deleteOutcome(req, res) {
-        try {
-            const incomesService = new IncomesService();
-            await incomesService.deleteIncome(req.query.incomeId);
-            res.status(200).json({ status: 200 });
-        }
-        catch (ex) {
-            logErrors(ex, req, res);
-        }
-    }
 }

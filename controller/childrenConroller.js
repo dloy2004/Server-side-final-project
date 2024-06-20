@@ -31,7 +31,7 @@ export class ChildrenController{
     async editChild(req, res) {
         try {
             const childrenService = new ChildrenService();
-            await childrenService.editChild(req.query.childId,req.body);
+            await childrenService.editChild(req.query.childId, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

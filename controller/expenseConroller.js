@@ -27,21 +27,10 @@ export class ExpenseController{
     }
 
     
-    async editExpense(req, res) {
-        try {
-            const expensesService = new ExpensesService();
-            await expensesService.editExpense(req.query.expenseId,req.body);
-            res.status(200).json({ status: 200 });
-        }
-        catch (ex) {
-            logErrors(ex, req, res);
-        }
-    }
-
     async deleteExpense(req, res) {
         try {
             const expensesService = new ExpensesService();
-            await expensesService.deleteExpense(req.query.expenseId);
+            await expensesService.deleteAllExpenses(req.query.familyIndex);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

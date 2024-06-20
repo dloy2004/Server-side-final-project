@@ -6,7 +6,7 @@ export class SupportsController{
     async getSupportsOfFamily(req, res) {
        try {
             const supportsService = new SupportsService();
-            const resultItem = await supportsService.getSupportsOfFamily(req.query.familyIndex);
+            const resultItem = await supportsService.getSupportsByColumnName("familyIndex", req.query.familyIndex);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -17,7 +17,7 @@ export class SupportsController{
     async getSupportsOfOrganization(req, res) {
         try {
              const supportsService = new SupportsService();
-             const resultItem = await supportsService.getSupportsOfOrganization(req.query.organization);
+             const resultItem = await supportsService.getSupportsByColumnName("organization", req.query.organization);
              res.status(200).json({ resultItem });
          }
          catch (ex) {
@@ -28,7 +28,7 @@ export class SupportsController{
      async getSupportsByDate(req, res) {
         try {
              const supportsService = new SupportsService();
-             const resultItem = await supportsService.getSupportsByDate(req.query.date);
+             const resultItem = await supportsService.getSupportsByColumnName("date", req.query.date);
              res.status(200).json({ resultItem });
          }
          catch (ex) {
@@ -40,7 +40,7 @@ export class SupportsController{
     async addSupport(req, res) {
         try {
             const supportsService = new SupportsService();
-            const result = await supportsService.addSupport(req.query.familyIndex,req.body);
+            const result = await supportsService.addSupport(req.query.familyIndex, req.body);
             res.status(200).json(result);
         }
         catch (ex) {
@@ -49,25 +49,4 @@ export class SupportsController{
     }
 
 
-    async deleteSupportByOrganization(req, res) {
-        try {
-            const supportsService = new SupportsService();
-            await supportsService.deleteSupportByOrganization(req.query.organization);
-            res.status(200).json({ status: 200 });
-        }
-        catch (ex) {
-            logErrors(ex, req, res);
-        }
-    }
-
-    async deleteSupportByDate(req, res) {
-        try {
-            const supportsService = new SupportsService();
-            await supportsService.deleteSupportByDate(req.query.date);
-            res.status(200).json({ status: 200 });
-        }
-        catch (ex) {
-            logErrors(ex, req, res);
-        }
-    }
 }

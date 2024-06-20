@@ -34,18 +34,23 @@ export function addQuery(tableName, itemKeys) {
 
 
 
-export function getByMultipuleValuesQuery(itemKeys, query) {
+
+
+export function addAndOperatorQuery(itemKeys, query) {
     let addToQuery = ""
     itemKeys.forEach(element => {
-        !(typeof query[element] === "undefined") ? addToQuery += (" and " + element + " LIKE '%" + query[element]) + "%'" : ""
-    })
-    if (query._sort)
-        addToQuery = addToQuery + "  ORDER BY " + query._sort
-    if (query._limit)
-        addToQuery = addToQuery + "  LIMIT " + query._limit
-    else if (query._page)
-        addToQuery = addToQuery + "  LIMIT " + query._page
+        !(typeof query[element] === "undefined") ? addToQuery += (" and " + element + " = " + query[element]): ""    })
+    // if (query._sort)
+    //     addToQuery = addToQuery + "  ORDER BY " + query._sort
+    // if (query._limit)
+    //     addToQuery = addToQuery + "  LIMIT " + query._limit
+    // else if (query._page)
+    //     addToQuery = addToQuery + "  LIMIT " + query._page
     return addToQuery
+}
+
+export function addOrOperatorQuery(columnName) {
+    return ` or ${columnName} = ?`;
 }
 
 /*

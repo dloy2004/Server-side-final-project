@@ -6,7 +6,7 @@ const memberController = new MemberController()
 memberRouter.get("/:id", memberController.getFamilyByParentId)
 memberRouter.get("/", memberController.someGetFunction)//fix
 memberRouter.post("/", memberController.addFamily)
-memberRouter.put("/:id", memberController.editFamily)
+memberRouter.put("/:familyIndex", memberController.editFamily)
 export {
     memberRouter
 }
