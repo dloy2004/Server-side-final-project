@@ -8,6 +8,11 @@ export function getByValueQuery(tableName, columnName) {
     return query
 }
 
+export function getByContainedValueQuery(tableName, columnName) {
+    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} LIKE CONCAT('%', ?, '%');`;
+    return query
+}
+
 export function deleteByValueQuery(tableName, columnName) {
     const query = `DELETE FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} = ?`;
     return query;
