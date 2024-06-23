@@ -11,15 +11,14 @@ export class PasswordService {
    }
 
     async addPassword(userName,password) {
-        const queryPassword=addQuery("passwords",["userName","password"]);
+        const queryPassword=addQuery("users",["userName","password"]);
         const result= await executeQuery(queryPassword,[userName,password])
         return result;
     }
 
     async updatePassword(passwordItem) {
-        const hashedPassword = sha256(passwordItem.password);
-        const queryPassword=updateQuery("passwords",["password","userName"]);
-        const result= await executeQuery(queryPassword,[hashedPassword,passwordItem.userName])
+        const queryPassword=updateQuery("users",["password","userName"]);
+        const result= await executeQuery(queryPassword,[passwordItem.password,passwordItem.userName])
         return result;
    }
 

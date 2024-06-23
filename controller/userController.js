@@ -1,4 +1,4 @@
-import { UserService } from '../Service/userService.js'
+import { UserService } from '../service/userService.js'
 import { logErrors } from '../middleWare/logErrors.js';
 import pkg from 'crypto-js';
 const { SHA256 } = pkg;

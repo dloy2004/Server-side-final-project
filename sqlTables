@@ -119,3 +119,35 @@ CREATE TABLE `final_project`.`debts` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
+-- Creating banks table - inforamtion about the family bank account.
+    CREATE TABLE `final_project`.`banks` (
+  `familyIndex` INT NOT NULL,
+  `bank` INT NOT NULL,
+  `branch` INT NOT NULL,
+  `account` INT NOT NULL,
+  PRIMARY KEY (`familyIndex`),
+  CONSTRAINT `bFamilyIndex`
+    FOREIGN KEY (`familyIndex`)
+    REFERENCES `final_project`.`members` (`familyIndex`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+
+    CREATE TABLE `final_project`.`supports` (
+  `FamilyIndex` INT NOT NULL,
+  `organization` VARCHAR(45) NOT NULL,
+  `sumOfSupport` INT NOT NULL,
+  `dateOfSupport` DATE NOT NULL,
+  PRIMARY KEY (`FamilyIndex`),
+  CONSTRAINT `sFamilyIndex`
+    FOREIGN KEY (`FamilyIndex`)
+    REFERENCES `final_project`.`members` (`familyIndex`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+    CREATE TABLE `final_project`.`users` (
+  `userName` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`userName`, `password`));
+
+

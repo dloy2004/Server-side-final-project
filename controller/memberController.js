@@ -38,8 +38,38 @@ export class MemberController {
         }
     }
 
-    
+    async getFamilyByParentName(req, res) {
+        try {
+            const memberService = new MemberService();
+            const resultItem = await memberService.getFamiliesByColumnNameContainedValue("parentName", req.query.familyName);
+            res.status(200).json({resultItem});
+        }
+        catch (ex) {
+            logErrors(ex, req, res);
+        }
+    }
 
+    async getFamilyByHusbandOccupation(req, res) {
+        try {
+            const memberService = new MemberService();
+            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("husbandOccupation", req.query.hubandOccupation);
+            res.status(200).json({resultItem});
+        }
+        catch (ex) {
+            logErrors(ex, req, res);
+        }
+    }
+
+    async getFamilyByFamilyStatus(req, res) {
+        try {
+            const memberService = new MemberService();
+            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("familyStatus", req.query.familyStatus);
+            res.status(200).json({resultItem});
+        }
+        catch (ex) {
+            logErrors(ex, req, res);
+        }
+    }
 
     async addFamily(req, res) {
         try {
