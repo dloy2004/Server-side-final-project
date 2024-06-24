@@ -1,7 +1,7 @@
 import { ExpensesService } from '../service/expensesService.js'
 import { logErrors } from '../middleWare/logErrors.js';
 
-export class ExpenseController{
+export class ExpensesController{
 
     async getExpensesOfFamily(req, res) {
        try {

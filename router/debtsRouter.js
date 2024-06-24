@@ -1,5 +1,5 @@
 import express from "express";
-import { DebtsController } from '../controller/debtsConroller.js'
+import { DebtsController } from '../controller/debtsController.js'
 
 const debtsRouter = express.Router();
 const debtsConroller = new DebtsController()

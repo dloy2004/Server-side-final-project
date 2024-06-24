@@ -1,5 +1,5 @@
 import express from "express";
-import { ChildrenController } from '../controller/childrenConroller.js'
+import { ChildrenController } from '../controller/childrenController.js'
 
 const childrenRouter = express.Router();
 const childrenController = new ChildrenController()

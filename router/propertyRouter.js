@@ -1,5 +1,5 @@
 import express from "express";
-import { PropertyController } from '../controller/propertyConroller.js'
+import { PropertyController } from '../controller/propertyController.js'
 
 const propertyRouter = express.Router();
 const propertyConroller = new PropertyController()

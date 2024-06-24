@@ -1,11 +1,11 @@
 import express from "express";
-import { ExpenseController } from '../controller/expenseController.js'
+import { ExpensesController } from '../controller/expensesConroller.js'
 
-const expenseRouter = express.Router();
-const expenseController = new ExpenseController()
-expenseRouter.get("/:familyIndex", expenseController.getExpenseOfFamily)
-expenseRouter.post("/:familyIndex", expenseController.addExpense)
-expenseRouter.delete("/:familyIndex", expenseController.deleteExpense)
+const expensesRouter = express.Router();
+const expenseController = new ExpensesController()
+expensesRouter.get("/:familyIndex", expenseController.getExpenseOfFamily)
+expensesRouter.post("/:familyIndex", expenseController.addExpense)
+expensesRouter.delete("/:familyIndex", expenseController.deleteExpense)
 export {
-    expenseRouter
+    expensesRouter
 }

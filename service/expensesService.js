@@ -1,8 +1,8 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, updateQuery, deleteQuery } from './queries.js'
+import { addQuery, getByValueQuery, deleteQuery } from './queries.js'
 
-export class ExpenseService {
+export class ExpensesService {
 
     async getExpensesOfFamily(familyIndex) {
         const expensesQuery = getByValueQuery("expenses", "familyIndex");        
