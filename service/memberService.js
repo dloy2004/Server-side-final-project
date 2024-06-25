@@ -1,6 +1,6 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, addOrOperatorQuery, updateQuery, getByContainedValueQuery } from './queries.js'
+import { addQuery, getByValueQuery, updateQuery, getByContainedValueQuery } from './queries.js'
 
 export class MemberService {
 

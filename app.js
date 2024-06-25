@@ -9,6 +9,7 @@ import {propertyRouter } from './router/propertyRouter.js';
 import {debtsRouter } from './router/debtsRouter.js';
 import {userRouter } from './router/userRouter.js';
 import {bankRouter } from './router/bankRouter.js';
+import { memberInListRouter } from './router/memberInListRouter.js'
 
 
 
@@ -22,6 +23,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/users',userRouter)
 app.use('/member', memberRouter);
+app.use('/memberInList', memberInListRouter);
 app.use('/children', childrenRouter);
 app.use('/incomes', incomesRouter);
 app.use('/expenses', expensesRouter);

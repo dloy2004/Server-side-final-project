@@ -7,6 +7,19 @@ export function getByValueQuery(tableName, columnName) {
     const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName}  where ${columnName} = ?`;
     return query
 }
+export function getSpecificColumnsQuery(tableName, columnNames) {
+    const columns = columnNames.join(', ');        
+    const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName}`;
+    return query;
+}
+
+export function getSpecificColumnsByValueQuery(tableName, columnNames, conditionalColumnName) {
+    const columns = columnNames.join(', ');        
+    const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName} where ${conditionalColumnName} = ?`;
+    return query;
+}
+
+
 
 export function getByContainedValueQuery(tableName, columnName) {
     const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} LIKE CONCAT('%', ?, '%');`;
@@ -41,17 +54,18 @@ export function addQuery(tableName, itemKeys) {
 
 
 
-export function addAndOperatorQuery(itemKeys, query) {
-    let addToQuery = ""
-    itemKeys.forEach(element => {
-        !(typeof query[element] === "undefined") ? addToQuery += (" and " + element + " = " + query[element]): ""    })
-    // if (query._sort)
-    //     addToQuery = addToQuery + "  ORDER BY " + query._sort
-    // if (query._limit)
-    //     addToQuery = addToQuery + "  LIMIT " + query._limit
-    // else if (query._page)
-    //     addToQuery = addToQuery + "  LIMIT " + query._page
-    return addToQuery
+export function addAndOperatorQuery(columnName) {
+    // let addToQuery = ""
+    // itemKeys.forEach(element => {
+    //     !(typeof query[element] === "undefined") ? addToQuery += (" and " + element + " = " + query[element]): ""    })
+    // // if (query._sort)
+    // //     addToQuery = addToQuery + "  ORDER BY " + query._sort
+    // // if (query._limit)
+    // //     addToQuery = addToQuery + "  LIMIT " + query._limit
+    // // else if (query._page)
+    // //     addToQuery = addToQuery + "  LIMIT " + query._page
+    // return addToQuery
+    return ` and ${columnName} = ?`
 }
 
 export function addOrOperatorQuery(columnName) {
