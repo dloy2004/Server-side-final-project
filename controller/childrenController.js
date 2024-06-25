@@ -6,7 +6,7 @@ export class ChildrenController{
     async getChildrenOfFamily(req, res) {
        try {
             const childrenService = new ChildrenService();
-            const resultItem = await childrenService.getChildrenOfFamily(req.query.familyIndex);
+            const resultItem = await childrenService.getChildrenOfFamily(req.params.familyIndex);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -31,7 +31,7 @@ export class ChildrenController{
     async editChild(req, res) {
         try {
             const childrenService = new ChildrenService();
-            await childrenService.editChild(req.query.childId, req.body);
+            await childrenService.editChild(req.params.childId, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {
@@ -42,7 +42,7 @@ export class ChildrenController{
     async deleteChild(req, res) {
         try {
             const childrenService = new ChildrenService();
-            await childrenService.deleteChild(req.query.childId);
+            await childrenService.deleteChild(req.params.childId);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

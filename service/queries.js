@@ -13,7 +13,7 @@ export function getByContainedValueQuery(tableName, columnName) {
     return query
 }
 
-export function deleteByValueQuery(tableName, columnName) {
+export function deleteQuery(tableName, columnName) {
     const query = `DELETE FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} = ?`;
     return query;
 }

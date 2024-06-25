@@ -2,7 +2,7 @@ import { executeQuery } from './db.js';
 
 import { addQuery, getByValueQuery, updateQuery, deleteQuery } from './queries.js'
 
-export class IncomesService {
+export class SupportsService {
 
     async getSupportsByColumnName(columnName, value) {
         const supportsQuery = getByValueQuery("supports", columnName);        
@@ -11,8 +11,8 @@ export class IncomesService {
     }
 
     async addSupport(supportObj) {
-        const supportsQuery = addQuery("supports", supportObj.keys);
-        const result = await executeQuery(supportsQuery, supportObj.values);
+        const supportsQuery = addQuery("supports", Object.keys(supportObj));
+        const result = await executeQuery(supportsQuery, Object.values(supportObj));
         return result;
     }
 

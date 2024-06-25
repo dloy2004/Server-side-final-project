@@ -2,7 +2,7 @@ import { executeQuery } from './db.js';
 
 import {addQuery, verifyPasswordQuery, deleteQuery, updateQuery} from './queries.js'
 
-export class PasswordService {
+export class UserService {
 
     async verifyPassword(name,pwd) {
         const queryPassword=verifyPasswordQuery();

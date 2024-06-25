@@ -8,7 +8,7 @@ export class MemberController {
     async getFamilyByParentId(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("husbandId", req.query.id);
+            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("husbandId", req.params.id);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -19,7 +19,7 @@ export class MemberController {
     async getFamilyByNumberOfChildren(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("numberOfChildren", req.query.numOfChildren);
+            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("numberOfChildren", req.params.numberOfChildren);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -30,7 +30,7 @@ export class MemberController {
     async getFamilyByFamilyName(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesByColumnNameContainedValue("familyName", req.query.familyName);
+            const resultItem = await memberService.getFamiliesByColumnNameContainedValue("familyName", req.params.familyName);
             res.status(200).json({resultItem});
         }
         catch (ex) {
@@ -41,7 +41,7 @@ export class MemberController {
     async getFamilyByParentName(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesByColumnNameContainedValue("parentName", req.query.familyName);
+            const resultItem = await memberService.getFamiliesByColumnNameContainedValue("parentName", req.params.familyName);
             res.status(200).json({resultItem});
         }
         catch (ex) {
@@ -52,7 +52,7 @@ export class MemberController {
     async getFamilyByHusbandOccupation(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("husbandOccupation", req.query.hubandOccupation);
+            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("husbandOccupation", req.params.hubandOccupation);
             res.status(200).json({resultItem});
         }
         catch (ex) {
@@ -63,7 +63,7 @@ export class MemberController {
     async getFamilyByFamilyStatus(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("familyStatus", req.query.familyStatus);
+            const resultItem = await memberService.getFamiliesByColumnNameEqualValue("familyStatus", req.params.familyStatus);
             res.status(200).json({resultItem});
         }
         catch (ex) {
@@ -83,10 +83,10 @@ export class MemberController {
     }
 
 
-    async updateFamily(req, res) {
+    async editFamily(req, res) {
         try {
             const memberService = new MemberService();
-            await memberService.updateFamily(req.familyIndex, req.body);
+            await memberService.updateFamily(req.params.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

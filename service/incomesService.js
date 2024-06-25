@@ -11,15 +11,15 @@ export class IncomesService {
     }
 
     async addIncome(incomeObj) {
-        const incomesQuery = addQuery("incomes", incomeObj.keys);
-        const result = await executeQuery(incomesQuery, incomeObj.values);
+        const incomesQuery = addQuery("incomes", Object.keys(incomeObj));
+        const result = await executeQuery(incomesQuery, Object.values(incomeObj));
         return result;
     }
 
-    async editIncome(familyIndex, incomeObj) {
+    /*async editIncome(familyIndex, incomeObj) {
         const incomesQuery = updateQuery("incomes", incomeObj.keys, "familyIndex");
         const result = await executeQuery(incomesQuery, incomeObj.values+[familyIndex]);//syntax
         return result;
-    }
+    }*/
 
 }

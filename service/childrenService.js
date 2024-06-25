@@ -11,15 +11,16 @@ export class ChildrenService {
     }
 
     async addChild(childObj) {
-        const childrenQuery = addQuery("children", childObj.keys);
-        const result = await executeQuery(childrenQuery, childObj.values);
+        const childrenQuery = addQuery("children", Object.keys(childObj));
+        const result = await executeQuery(childrenQuery, Object.values(childObj));
         return result;
     }
 
 
     async editChild(childId, childObj) {
-        const childrenQuery = updateQuery("members", childObj.keys, "childId");
-        const result = await executeQuery(childrenQuery, childObj.values + [childId]);//check syntax
+        console.log(childId);
+        const childrenQuery = updateQuery("children", Object.keys(childObj), "childId");
+        const result = await executeQuery(childrenQuery, [...Object.values(childObj) ,childId]);
         return result;
     }
 

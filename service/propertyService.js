@@ -11,15 +11,15 @@ export class PropertyService {
     }
 
     async addPropertyDetails(propertyObj) {
-        const propertyQuery = addQuery("property", propertyObj.keys);
-        const result = await executeQuery(propertyQuery, propertyObj.values);
+        const propertyQuery = addQuery("property",Object.keys(propertyObj));
+        const result = await executeQuery(propertyQuery, Object.values(propertyObj));
         return result;
     }
 
 
     async editProperty(familyIndex, propertyObj) {
-        const propertyQuery = updateQuery("property", propertyObj.keys, "familyIndex");
-        const result = await executeQuery(propertyQuery, propertyObj.values + [familyIndex]);//check syntax
+        const propertyQuery = updateQuery("property", Object.keys(propertyObj), "familyIndex");
+        const result = await executeQuery(propertyQuery, [...Object.values(propertyObj) ,familyIndex]);//check syntax
         return result;
     }
    

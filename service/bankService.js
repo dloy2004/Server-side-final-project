@@ -11,15 +11,15 @@ export class BankService {
     }
 
     async addAccountDetails(accountObj) {
-        const bankQuery = addQuery("bankAccounts", accountObj.keys);
-        const result = await executeQuery(bankQuery, accountObj.values);
+        const bankQuery = addQuery("bankAccounts", Object.keys(accountObj));
+        const result = await executeQuery(bankQuery, Object.values(accountObj));
         return result;
     }
 
 
     async editAccount(familyIndex, accountObj) {
-        const bankQuery = updateQuery("bankAccounts", accountObj.keys, "familyIndex");
-        const result = await executeQuery(bankQuery, accountObj.values + [familyIndex]);//check syntax
+        const bankQuery = updateQuery("bankAccounts",Object.keys(accountObj), "familyIndex");
+        const result = await executeQuery(bankQuery, [Object.values(accountObj) ,[familyIndex]]);//check syntax
         return result;
     }
    

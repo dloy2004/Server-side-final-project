@@ -6,7 +6,7 @@ export class IncomesController{
     async getIncomesOfFamily(req, res) {
        try {
             const incomesService = new IncomesService();
-            const resultItem = await incomesService.getIncomesOfFamily(req.query.familyIndex);
+            const resultItem = await incomesService.getIncomesOfFamily(req.params.familyIndex);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -30,7 +30,7 @@ export class IncomesController{
     async editIncome(req, res) {
         try {
             const incomesService = new IncomesService();
-            await incomesService.editIncome(req.query.familyIndex, req.body);
+            await incomesService.editIncome(req.params.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

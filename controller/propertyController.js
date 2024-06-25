@@ -1,12 +1,12 @@
 import { PropertyService } from '../service/propertyService.js'
 import { logErrors } from '../middleWare/logErrors.js';
 
-export class BankController{
+export class PropertyController{
 
     async getPropertyOfFamily(req, res) {
        try {
             const propertyService = new PropertyService();
-            const resultItem = await propertyService.getPropertyOfFamily(req.query.familyIndex);
+            const resultItem = await propertyService.getPropertyOfFamily(req.params.familyIndex);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -30,7 +30,7 @@ export class BankController{
     async editProperty(req, res) {
         try {
             const propertyService = new PropertyService();
-            await propertyService.editProperty(req.query.familyIndex, req.body);
+            await propertyService.editProperty(req.params.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

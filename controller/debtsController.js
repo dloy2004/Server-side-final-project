@@ -1,12 +1,12 @@
 import { DebtsService } from '../service/debtsService.js'
 import { logErrors } from '../middleWare/logErrors.js';
 
-export class DevtsController{
+export class DebtsController{
 
     async getDebtsOfFamily(req, res) {
        try {
             const debtsService = new DebtsService();
-            const resultItem = await debtsService.getDebtsOfFamily(req.query.familyIndex);
+            const resultItem = await debtsService.getDebtsOfFamily(req.params.familyIndex);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -30,7 +30,7 @@ export class DevtsController{
     async editDebts(req, res) {
         try {
             const debtsService = new DebtsService();
-            await debtsService.editDebts(req.query.familyIndex, req.body);
+            await debtsService.editDebts(req.params.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {

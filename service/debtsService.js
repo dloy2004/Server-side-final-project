@@ -11,15 +11,15 @@ export class DebtsService {
     }
 
     async addAccountDetails(debtsObj) {
-        const debtsQuery = addQuery("bankAccounts", debtsObj.keys);
-        const result = await executeQuery(debtsQuery, debtsObj.values);
+        const debtsQuery = addQuery("bankAccounts", Object.keys(debtsObj));
+        const result = await executeQuery(debtsQuery, Object.values(debtsObj));
         return result;
     }
 
 
     async editAccount(familyIndex, debtsObj) {
-        const debtsQuery = updateQuery("bankAccounts", debtsObj.keys, "familyIndex");
-        const result = await executeQuery(debtsQuery, debtsObj.values + [familyIndex]);//check syntax
+        const debtsQuery = updateQuery("bankAccounts", Object.keys(debtsObj), "familyIndex");
+        const result = await executeQuery(debtsQuery, [...Object.values(debtsObj), familyIndex]);//check syntax
         return result;
     }
    

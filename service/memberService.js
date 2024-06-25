@@ -11,27 +11,28 @@ export class MemberService {
     //     return result;
     // }
     async getFamiliesByColumnNameEqualValue(columnName, value) {
-        const memberQuery = getByValueQuery("member", columnName);        
+        const memberQuery = getByValueQuery("members", columnName);        
         const result = await executeQuery(memberQuery, [value]);
         return result;
     }
 
     async getFamiliesByColumnNameContainedValue(columnName, value) {
-        const memberQuery = getByContainedValueQuery("member", columnName);
+        const memberQuery = getByContainedValueQuery("members", columnName);
         const result = await executeQuery(memberQuery, [value]);
         return result;
     }
 
     async addFamily(familyObj) {
-        const memberQuery = addQuery("members", familyObj.keys);
-        const result = await executeQuery(memberQuery, familyObj.values);
+        const memberQuery = addQuery("members", Object.keys(familyObj));
+        const result = await executeQuery(memberQuery, Object.values(familyObj));
         return result;
     }
 
 
     async updateFamily(familyIndex, familyObj) {
-        const memberQuery = updateQuery("members", familyObj.keys, "familyIndex");
-        const result = await executeQuery(memberQuery, familyObj.values + [familyIndex]);//fix the syntax so everything appears in one array
+        const memberQuery = updateQuery("members", Object.keys(familyObj), "familyIndex");
+        let temp=Object.values(familyObj);
+        const result = await executeQuery(memberQuery, [... temp,...familyIndex]);//fix the syntax so everything appears in one array
         return result;
     }
 

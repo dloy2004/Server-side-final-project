@@ -6,7 +6,7 @@ export class ExpensesController{
     async getExpensesOfFamily(req, res) {
        try {
             const expensesService = new ExpensesService();
-            const resultItem = await expensesService.getExpensesOfFamily(req.query.familyIndex);
+            const resultItem = await expensesService.getExpensesOfFamily(req.params.familyIndex);
             res.status(200).json({ resultItem });
         }
         catch (ex) {
@@ -30,7 +30,7 @@ export class ExpensesController{
     async deleteExpense(req, res) {
         try {
             const expensesService = new ExpensesService();
-            await expensesService.deleteAllExpenses(req.query.familyIndex);
+            await expensesService.deleteAllExpenses(req.params.familyIndex);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {
