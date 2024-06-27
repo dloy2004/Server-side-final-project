@@ -51,21 +51,19 @@ export function addQuery(tableName, itemKeys) {
 }
 
 
+export function getDataWithParamsQuery(tableName, query) {
+    let baseQuery = `SELECT * FROM ${process.env.DB_NAME}.${tableName}`;
+    let queryConditions = [];
 
+    Object.keys(query).forEach(key => {
+        queryConditions.push(`${key} = ?`); 
+    });
 
+    if (queryConditions.length > 0) {
+        baseQuery += ' WHERE ' + queryConditions.join(' AND ');
+    }
 
-export function addAndOperatorQuery(columnName) {
-    // let addToQuery = ""
-    // itemKeys.forEach(element => {
-    //     !(typeof query[element] === "undefined") ? addToQuery += (" and " + element + " = " + query[element]): ""    })
-    // // if (query._sort)
-    // //     addToQuery = addToQuery + "  ORDER BY " + query._sort
-    // // if (query._limit)
-    // //     addToQuery = addToQuery + "  LIMIT " + query._limit
-    // // else if (query._page)
-    // //     addToQuery = addToQuery + "  LIMIT " + query._page
-    // return addToQuery
-    return ` and ${columnName} = ?`
+    return baseQuery;
 }
 
 export function addOrOperatorQuery(columnName) {
