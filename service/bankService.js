@@ -1,12 +1,13 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, updateQuery, deleteQuery } from './queries.js'
+import { addQuery, updateQuery, getDataWithParamsQuery } from './queries.js'
 
 export class BankService {
 
-    async getAccountOfFamily(familyIndex) {
-        const bankQuery = getByValueQuery("bankAccounts", "familyIndex");        
-        const result = await executeQuery(bankQuery, [familyIndex]);
+    async getAccountOfFamily(query) {
+        const bankQuery = getDataWithParamsQuery("bankAccounts", query);
+        const queryParams = Object.values(query);        
+        const result = await executeQuery(bankQuery, queryParams);
         return result;
     }
 
@@ -15,7 +16,6 @@ export class BankService {
         const result = await executeQuery(bankQuery, Object.values(accountObj));
         return result;
     }
-
 
     async editAccount(familyIndex, accountObj) {
         const bankQuery = updateQuery("bankAccounts",Object.keys(accountObj), "familyIndex");

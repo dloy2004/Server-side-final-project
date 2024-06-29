@@ -6,7 +6,7 @@ export class ChildrenController{
     async getChildrenOfFamily(req, res) {
        try {
             const childrenService = new ChildrenService();
-            const data = await childrenService.getChildrenOfFamily(req.params.familyIndex);
+            const data = await childrenService.getChildrenOfFamily(req.query);
             res.status(200).json({ data });
         }
         catch (ex) {

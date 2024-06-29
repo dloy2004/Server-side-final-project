@@ -1,12 +1,13 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, updateQuery } from './queries.js'
+import { addQuery, getDataWithParamsQuery, updateQuery } from './queries.js'
 
 export class PropertyService {
 
-    async getPropertyOfFamily(familyIndex) {
-        const propertyQuery = getByValueQuery("property", "familyIndex");        
-        const result = await executeQuery(propertyQuery, [familyIndex]);
+    async getPropertyOfFamily(query) {
+        const propertyQuery = getDataWithParamsQuery("property", query);
+        const queryParams = Object.values(query);        
+        const result = await executeQuery(propertyQuery, queryParams);
         return result;
     }
 

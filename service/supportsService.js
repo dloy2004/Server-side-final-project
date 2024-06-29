@@ -1,12 +1,13 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, updateQuery, deleteQuery } from './queries.js'
+import { addQuery, getDataWithParamsQuery } from './queries.js'
 
 export class SupportsService {
 
-    async getSupportsByColumnName(columnName, value) {
-        const supportsQuery = getByValueQuery("supports", columnName);        
-        const result = await executeQuery(supportsQuery, [value]);
+    async getSupportsByColumnName(query) {
+        const supportsQuery = getDataWithParamsQuery("supports", query);
+        const queryParams = Object.values(query);        
+        const result = await executeQuery(supportsQuery, queryParams);
         return result;
     }
 

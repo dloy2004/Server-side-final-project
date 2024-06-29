@@ -6,7 +6,7 @@ export class BankController{
     async getAccountOfFamily(req, res) {
        try {
             const bankService = new BankService();
-            const data = await bankService.getAccountOfFamily(req.params.familyIndex);
+            const data = await bankService.getAccountOfFamily(req.query);
             res.status(200).json({ data });
         }
         catch (ex) {

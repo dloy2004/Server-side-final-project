@@ -1,12 +1,13 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, updateQuery, deleteQuery } from './queries.js'
+import { addQuery, getDataWithParamsQuery } from './queries.js'
 
 export class IncomesService {
 
-    async getIncomesOfFamily(familyIndex) {
-        const incomesQuery = getByValueQuery("incomes", "familyIndex");        
-        const result = await executeQuery(incomesQuery, [familyIndex]);
+    async getIncomesOfFamily(query) {
+        const incomesQuery = getDataWithParamsQuery("incomes", query);
+        const queryParams = Object.values(query);
+        const result = await executeQuery(incomesQuery, queryParams);
         return result;
     }
 

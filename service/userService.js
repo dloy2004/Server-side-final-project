@@ -1,12 +1,12 @@
 import { executeQuery } from './db.js';
 
-import {addQuery, verifyPasswordQuery, deleteQuery, updateQuery} from './queries.js'
+import {addQuery, verifyPasswordQuery,updateQuery} from './queries.js'
 
 export class UserService {
 
     async verifyPassword(name,pwd) {
-        const queryPassword=verifyPasswordQuery();
-        const result= await executeQuery(queryPassword,[name,pwd])
+        const queryPassword = verifyPasswordQuery();
+        const result= await executeQuery(queryPassword,[name,pwd]);
         return result;
    }
 

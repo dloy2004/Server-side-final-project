@@ -6,7 +6,7 @@ export class IncomesController{
     async getIncomesOfFamily(req, res) {
        try {
             const incomesService = new IncomesService();
-            const data = await incomesService.getIncomesOfFamily(req.params.familyIndex);
+            const data = await incomesService.getIncomesOfFamily(req.query);
             res.status(200).json({ data });
         }
         catch (ex) {

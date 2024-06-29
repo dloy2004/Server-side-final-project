@@ -1,31 +1,3 @@
-export function getQuery(tableName) {
-    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName}`;
-    return query
-}
-
-export function getByValueQuery(tableName, columnName) {
-    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName}  where ${columnName} = ?`;
-    return query
-}
-export function getSpecificColumnsQuery(tableName, columnNames) {
-    const columns = columnNames.join(', ');
-    const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName}`;
-    return query;
-}
-
-export function getSpecificColumnsByValueQuery(tableName, columnNames, conditionalColumnName) {
-    const columns = columnNames.join(', ');
-    const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName} where ${conditionalColumnName} = ?`;
-    return query;
-}
-
-
-
-export function getByContainedValueQuery(tableName, columnName) {
-    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} LIKE CONCAT('%', ?, '%');`;
-    return query
-}
-
 export function deleteQuery(tableName, columnName) {
     const query = `DELETE FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} = ?`;
     return query;
@@ -73,6 +45,43 @@ export function getDataWithParamsQuery(tableName, query) {
     return baseQuery;
 }
 
+export function verifyPasswordQuery() {
+    const query = `SELECT true FROM ${process.env.DB_NAME}.users where userName=? and password=?;`;
+    return query;
+}
+
+
+//----------------------------
+//Queries not currently useful
+//----------------------------
+export function getQuery(tableName) {
+    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName}`;
+    return query
+}
+
+export function getByValueQuery(tableName, columnName) {
+    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName}  where ${columnName} = ?`;
+    return query
+}
+export function getSpecificColumnsQuery(tableName, columnNames) {
+    const columns = columnNames.join(', ');
+    const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName}`;
+    return query;
+}
+
+export function getSpecificColumnsByValueQuery(tableName, columnNames, conditionalColumnName) {
+    const columns = columnNames.join(', ');
+    const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName} where ${conditionalColumnName} = ?`;
+    return query;
+}
+
+
+export function getByContainedValueQuery(tableName, columnName) {
+    const query = `SELECT * FROM ${process.env.DB_NAME}.${tableName} WHERE ${columnName} LIKE CONCAT('%', ?, '%');`;
+    return query
+}
+
+
 export function addOrOperatorQuery(columnName) {
     return ` or ${columnName} = ?`;
 }
@@ -94,7 +103,3 @@ export function addOrOperatorQuery(columnName) {
 */
 
 
-export function verifyPasswordQuery() {
-    const query = `SELECT true FROM ${process.env.DB_NAME}.users where userName=? and password=?;`;
-    return query;
-}

@@ -6,7 +6,7 @@ export class ExpensesController{
     async getExpensesOfFamily(req, res) {
        try {
             const expensesService = new ExpensesService();
-            const data = await expensesService.getExpensesOfFamily(req.params.familyIndex);
+            const data = await expensesService.getExpensesOfFamily(req.query);
             res.status(200).json({ data });
         }
         catch (ex) {

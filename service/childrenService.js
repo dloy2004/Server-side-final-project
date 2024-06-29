@@ -1,12 +1,13 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getByValueQuery, updateQuery, deleteQuery } from './queries.js'
+import { addQuery, updateQuery, deleteQuery, getDataWithParamsQuery } from './queries.js'
 
 export class ChildrenService {
 
-    async getChildrenOfFamily(familyIndex) {
-        const childrenQuery = getByValueQuery("children", "familyIndex");        
-        const result = await executeQuery(childrenQuery, [familyIndex]);
+    async getChildrenOfFamily(query) {
+        const childrenQuery = getDataWithParamsQuery("children", query); 
+        const queryParams = Object.values(query);
+        const result = await executeQuery(childrenQuery, queryParams);
         return result;
     }
 

@@ -3,10 +3,10 @@ import { logErrors } from '../middleWare/logErrors.js';
 
 export class SupportsController{
     
-    async getSupportsOfFamily(req, res) {
+    async getSupportsUsingParams(req, res) {
        try {
             const supportsService = new SupportsService();
-            const data = await supportsService.getSupportsByColumnName("familyIndex", req.params.familyIndex);
+            const data = await supportsService.getSupportsByColumnName(req.query);
             res.status(200).json({ data });
         }
         catch (ex) {
@@ -14,28 +14,7 @@ export class SupportsController{
         }
 
     }
-    async getSupportsOfOrganization(req, res) {
-        try {
-             const supportsService = new SupportsService();
-             const data = await supportsService.getSupportsByColumnName("organization", req.params.organization);
-             res.status(200).json({ data });
-         }
-         catch (ex) {
-             logErrors(ex, req, res);
-         }
- 
-     }
-     async getSupportsByDate(req, res) {
-        try {
-             const supportsService = new SupportsService();
-             const data = await supportsService.getSupportsByColumnName("date", req.params.date);
-             res.status(200).json({ data });
-         }
-         catch (ex) {
-             logErrors(ex, req, res);
-         }
- 
-     }
+    
     
     async addSupport(req, res) {
         try {
