@@ -6,8 +6,8 @@ export class SupportsController{
     async getSupportsOfFamily(req, res) {
        try {
             const supportsService = new SupportsService();
-            const resultItem = await supportsService.getSupportsByColumnName("familyIndex", req.params.familyIndex);
-            res.status(200).json({ resultItem });
+            const data = await supportsService.getSupportsByColumnName("familyIndex", req.params.familyIndex);
+            res.status(200).json({ data });
         }
         catch (ex) {
             logErrors(ex, req, res);
@@ -17,8 +17,8 @@ export class SupportsController{
     async getSupportsOfOrganization(req, res) {
         try {
              const supportsService = new SupportsService();
-             const resultItem = await supportsService.getSupportsByColumnName("organization", req.params.organization);
-             res.status(200).json({ resultItem });
+             const data = await supportsService.getSupportsByColumnName("organization", req.params.organization);
+             res.status(200).json({ data });
          }
          catch (ex) {
              logErrors(ex, req, res);
@@ -28,8 +28,8 @@ export class SupportsController{
      async getSupportsByDate(req, res) {
         try {
              const supportsService = new SupportsService();
-             const resultItem = await supportsService.getSupportsByColumnName("date", req.params.date);
-             res.status(200).json({ resultItem });
+             const data = await supportsService.getSupportsByColumnName("date", req.params.date);
+             res.status(200).json({ data });
          }
          catch (ex) {
              logErrors(ex, req, res);

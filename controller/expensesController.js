@@ -6,8 +6,8 @@ export class ExpensesController{
     async getExpensesOfFamily(req, res) {
        try {
             const expensesService = new ExpensesService();
-            const resultItem = await expensesService.getExpensesOfFamily(req.params.familyIndex);
-            res.status(200).json({ resultItem });
+            const data = await expensesService.getExpensesOfFamily(req.params.familyIndex);
+            res.status(200).json({ data });
         }
         catch (ex) {
             logErrors(ex, req, res);

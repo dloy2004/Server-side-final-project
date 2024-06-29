@@ -6,8 +6,8 @@ export class IncomesController{
     async getIncomesOfFamily(req, res) {
        try {
             const incomesService = new IncomesService();
-            const resultItem = await incomesService.getIncomesOfFamily(req.params.familyIndex);
-            res.status(200).json({ resultItem });
+            const data = await incomesService.getIncomesOfFamily(req.params.familyIndex);
+            res.status(200).json({ data });
         }
         catch (ex) {
             logErrors(ex, req, res);

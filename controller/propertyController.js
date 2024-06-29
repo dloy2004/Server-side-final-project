@@ -6,8 +6,8 @@ export class PropertyController{
     async getPropertyOfFamily(req, res) {
        try {
             const propertyService = new PropertyService();
-            const resultItem = await propertyService.getPropertyOfFamily(req.params.familyIndex);
-            res.status(200).json({ resultItem });
+            const data = await propertyService.getPropertyOfFamily(req.params.familyIndex);
+            res.status(200).json({ data });
         }
         catch (ex) {
             logErrors(ex, req, res);

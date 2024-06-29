@@ -6,8 +6,8 @@ export class MemberController {
     async getFamiliesWithParams(req, res) {
         try {
             const memberService = new MemberService();
-            const resultItem = await memberService.getFamiliesWithConditionalParams(req.query);            
-            res.status(200).json({ resultItem });
+            const data = await memberService.getFamiliesWithConditionalParams(req.query);            
+            res.status(200).json({ data });
         }
         catch (ex) {
             logErrors(ex, req, res);

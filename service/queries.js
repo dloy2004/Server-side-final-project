@@ -8,13 +8,13 @@ export function getByValueQuery(tableName, columnName) {
     return query
 }
 export function getSpecificColumnsQuery(tableName, columnNames) {
-    const columns = columnNames.join(', ');        
+    const columns = columnNames.join(', ');
     const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName}`;
     return query;
 }
 
 export function getSpecificColumnsByValueQuery(tableName, columnNames, conditionalColumnName) {
-    const columns = columnNames.join(', ');        
+    const columns = columnNames.join(', ');
     const query = `SELECT ${columns} FROM ${process.env.DB_NAME}.${tableName} where ${conditionalColumnName} = ?`;
     return query;
 }
@@ -35,7 +35,7 @@ export function updateQuery(tableName, itemKeys, columnName) {
     let keys = "";
     itemKeys.forEach(element => {
         keys += `${element} = ?,`;
-    })    
+    })
     const query = `UPDATE ${process.env.DB_NAME}.${tableName} SET ${keys.slice(0, -1)} WHERE ` + columnName + ` = ? `;
     return query;
 }
@@ -56,13 +56,20 @@ export function getDataWithParamsQuery(tableName, query) {
     let queryConditions = [];
 
     Object.keys(query).forEach(key => {
-        queryConditions.push(`${key} = ?`); 
+        if (key !== '_limit' && key !== '_offset') {
+            queryConditions.push(`${key} = ?`);
+        }
     });
 
     if (queryConditions.length > 0) {
         baseQuery += ' WHERE ' + queryConditions.join(' AND ');
     }
-
+    if (query._limit) {        
+        baseQuery += ` LIMIT ${parseInt(query._limit)}`;       
+    }
+    if (query._offset) {
+        baseQuery += ` OFFSET ${parseInt(query._offset)}`;       
+    }
     return baseQuery;
 }
 
@@ -87,7 +94,7 @@ export function addOrOperatorQuery(columnName) {
 */
 
 
-export function verifyPasswordQuery(){
+export function verifyPasswordQuery() {
     const query = `SELECT true FROM ${process.env.DB_NAME}.users where userName=? and password=?;`;
     return query;
 }
