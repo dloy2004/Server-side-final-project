@@ -12,7 +12,8 @@ export class MemberController {
         catch (ex) {
             logErrors(ex, req, res);
         }
-    }    
+    }   
+        
 
     async addFamily(req, res) {
         try {
@@ -36,4 +37,16 @@ export class MemberController {
             logErrors(ex, req, res);
         }
     }
+    
+    // async getFamiliesWithChildrenInAgeRange(req, res) {
+    //     try {
+    //         const query = req.query;
+    //         const memberService = new MemberService();
+    //         const data = await memberService.getFamiliesWithChildrenInAgeRange(query);
+    //         res.status(200).json({ data });
+    //     }
+    //     catch (ex) {
+    //         logErrors(ex, req, res);
+    //     }
+    // }
 }

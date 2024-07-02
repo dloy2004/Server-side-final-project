@@ -122,7 +122,7 @@ CREATE TABLE `final_project`.`debts` (
 -- Creating banks table - inforamtion about the family bank account.
     CREATE TABLE `final_project`.`banks` (
   `familyIndex` INT NOT NULL,
-  `bank` INT NOT NULL,
+  `bank` VARCHAR(45) NOT NULL,
   `branch` INT NOT NULL,
   `account` INT NOT NULL,
   PRIMARY KEY (`familyIndex`),
