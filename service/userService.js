@@ -6,7 +6,8 @@ export class UserService {
 
     async verifyPassword(name,pwd) {
         const queryPassword = verifyPasswordQuery();
-        const result= await executeQuery(queryPassword,[name,pwd]);
+        const result = await executeQuery(queryPassword, [name,pwd] );
+        console.log(result)
         return result;
    }
 

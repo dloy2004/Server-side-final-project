@@ -7,9 +7,9 @@ export class UserController {
 
     async verifyPwd(req, res) {
         try {
-            const hashedPassword=SHA256(req.body.password).toString()
+            // const hashedPassword = SHA256(req.body.password).toString()
             const userService = new UserService();
-            const ans = await userService.verifyPassword(req.body.userName,hashedPassword);
+            const ans = await userService.verifyPassword(req.body.userName, req.body.password);
             res.status(200).json(ans)
         }
 

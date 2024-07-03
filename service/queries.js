@@ -22,7 +22,6 @@ export function addQuery(tableName, itemKeys) {
     return query;
 }
 
-
 export function getDataWithParamsQuery(tableName, query) {
     let baseQuery = `SELECT * FROM ${process.env.DB_NAME}.${tableName}`;
     let queryConditions = [];
@@ -35,13 +34,15 @@ export function getDataWithParamsQuery(tableName, query) {
         baseQuery += ' WHERE ' + queryConditions.join(' AND ');
     }
     if (query._limit) {        
-        baseQuery += ` LIMIT ${parseInt(query._limit)}`;       
+        baseQuery += ` LIMIT ?`;       
     }
     if (query._offset) {
-        baseQuery += ` OFFSET ${parseInt(query._offset)}`;       
+        baseQuery += ` OFFSET ?`;       
     }   
     return baseQuery;
 }
+
+
 
 export function NaturalJoinQuery(firstTable, secondTable, equalColumn, conditions) {
     let baseQuery = `
@@ -76,7 +77,7 @@ export function NaturalJoinQuery(firstTable, secondTable, equalColumn, condition
 
 
 export function verifyPasswordQuery() {
-    const query = `SELECT true FROM ${process.env.DB_NAME}.users where userName=? and password=?;`;
+    const query = `SELECT true FROM ${process.env.DB_NAME}.users where userName = ? and password = ?;`;
     return query;
 }
 

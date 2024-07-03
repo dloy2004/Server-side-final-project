@@ -150,4 +150,26 @@ CREATE TABLE `final_project`.`debts` (
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`userName`, `password`));
 
+  --Creating files table - uploaded files, images
+ CREATE TABLE `final_project`.`files` (
+    fileId INT AUTO_INCREMENT PRIMARY KEY,
+    fileName VARCHAR(255) NOT NULL,
+    mimeType VARCHAR(50) NOT NULL,
+    data LONGBLOB NOT NULL
+);
+
+
+-- CREATE TABLE `final_project`.`files` (
+--     fileId INT AUTO_INCREMENT PRIMARY KEY,
+--     familyIndex INT NOT NULL,
+--     fileName VARCHAR(255) NOT NULL,
+--     mimeType VARCHAR(50) NOT NULL,
+--     data LONGBLOB NOT NULL,
+--      INDEX `fileFamilyIndex_idx` (`familyIndex` ASC) VISIBLE,
+--     CONSTRAINT `fileFamilyIndex`
+--       FOREIGN KEY (`familyIndex`)
+--       REFERENCES `final_project`.`members` (`familyIndex`)
+--       ON DELETE CASCADE
+--       ON UPDATE NO ACTION
+-- );
 
