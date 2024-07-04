@@ -16,6 +16,5 @@ export class SupportsService {
         const result = await executeQuery(supportsQuery, Object.values(supportObj));
         return result;
     }
-
     
 }

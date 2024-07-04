@@ -134,11 +134,10 @@ CREATE TABLE `final_project`.`debts` (
 
 
     CREATE TABLE `final_project`.`supports` (
-  `FamilyIndex` INT NOT NULL,
+  `familyIndex` INT NOT NULL,
   `organization` VARCHAR(45) NOT NULL,
   `sumOfSupport` INT NOT NULL,
-  `dateOfSupport` DATE NOT NULL,
-  PRIMARY KEY (`FamilyIndex`),
+  `dateOfSupport` DATE NOT NULL,  
   CONSTRAINT `sFamilyIndex`
     FOREIGN KEY (`FamilyIndex`)
     REFERENCES `final_project`.`members` (`familyIndex`)

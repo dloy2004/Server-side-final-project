@@ -19,7 +19,7 @@ export class SupportsController{
     async addSupport(req, res) {
         try {
             const supportsService = new SupportsService();
-            const result = await supportsService.addSupport(req.params.familyIndex, req.body);
+            const result = await supportsService.addSupport(req.body);
             res.status(200).json(result);
         }
         catch (ex) {

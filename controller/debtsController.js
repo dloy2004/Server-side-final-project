@@ -30,7 +30,7 @@ export class DebtsController{
     async editDebts(req, res) {
         try {
             const debtsService = new DebtsService();
-            await debtsService.editDebts(req.params.familyIndex, req.body);
+            await debtsService.editFamilyDebts(req.params.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {
