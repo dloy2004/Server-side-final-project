@@ -19,7 +19,8 @@ export class BankService {
 
     async editAccount(familyIndex, accountObj) {
         const bankQuery = updateQuery("banks",Object.keys(accountObj), "familyIndex");
-        const result = await executeQuery(bankQuery, [Object.values(accountObj) ,[familyIndex]]);//check syntax
+        const values = Object.values(accountObj);
+        const result = await executeQuery(bankQuery, [...values, ...familyIndex]);
         return result;
     }
    

@@ -1,26 +1,25 @@
 import { executeQuery } from './db.js';
 
-import { addQuery, getDataWithParamsQuery } from './queries.js'
+import { addQuery, getDataWithParamsQuery, updateQuery } from './queries.js'
 
 export class IncomesService {
 
-    async getIncomesOfFamily(query) {
-        const incomesQuery = getDataWithParamsQuery("incomes", query);
+    async getIncomesOfFamily(tableName, query) {
+        const incomesQuery = getDataWithParamsQuery(tableName, query);
         const queryParams = Object.values(query);
         const result = await executeQuery(incomesQuery, queryParams);
         return result;
     }
 
-    async addIncome(incomeObj) {
-        const incomesQuery = addQuery("incomes", Object.keys(incomeObj));
+    async addIncome(tableName, incomeObj) {
+        const incomesQuery = addQuery(tableName, Object.keys(incomeObj));
         const result = await executeQuery(incomesQuery, Object.values(incomeObj));
         return result;
     }
 
-    /*async editIncome(familyIndex, incomeObj) {
-        const incomesQuery = updateQuery("incomes", incomeObj.keys, "familyIndex");
-        const result = await executeQuery(incomesQuery, incomeObj.values+[familyIndex]);//syntax
+    async editIncome(tableName, familyIndex, incomeObj) {
+        const incomesQuery = updateQuery(tableName, Object.keys(incomeObj), "familyIndex");
+        const result = await executeQuery(incomesQuery, [...Object.values(incomeObj), ...familyIndex]);//syntax
         return result;
-    }*/
-
+    }
 }

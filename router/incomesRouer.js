@@ -3,8 +3,8 @@ import { IncomesController } from '../controller/incomesController.js'
 
 const incomesRouter = express.Router();
 const incomeController = new IncomesController()
-incomesRouter.get("/", incomeController.getIncomesOfFamily)
-incomesRouter.post("/:familyIndex", incomeController.addIncome)
+incomesRouter.get("/", incomeController.getIncomesOfFamilyByYear)
+incomesRouter.post("/:year", incomeController.addIncome)
 incomesRouter.put("/:familyIndex", incomeController.editIncome)
 export {
     incomesRouter

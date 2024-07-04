@@ -30,7 +30,7 @@ export class BankController{
     async editAccount(req, res) {
         try {
             const bankService = new BankService();
-            await bankService.editAccount(req.query.familyIndex, req.body);
+            await bankService.editAccount(req.params.familyIndex, req.body);
             res.status(200).json({ status: 200 });
         }
         catch (ex) {
