@@ -27,6 +27,7 @@ CREATE TABLE `final_project`.`members` (
   `recommender` VARCHAR(45) NOT NULL,
   `recommendersPhone` INT NOT NULL,
   `descriptionAndRequest` LONGTEXT NOT NULL,
+  `familyLevel` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`familyIndex`),
   UNIQUE INDEX `familyIndex_UNIQUE` (`familyIndex` ASC) VISIBLE)
 
