@@ -23,10 +23,10 @@ export class UserController {
     async addPwd(req, res) {
 
         try {
-            const hashedPassword=SHA256(req.body.password).toString()
-            console.log(hashedPassword)
+            //const hashedPassword=SHA256(req.body.password).toString()
+            //console.log(hashedPassword)
             const userService = new UserService();
-            await userService.addPassword(req.body.userName,hashedPassword);
+            await userService.addPassword(req.body.userName,req.body.password);
             res.status(200).json({ status: 200 })
         }
         catch (ex) {
