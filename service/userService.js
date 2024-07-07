@@ -11,9 +11,9 @@ export class UserService {
         return result;
    }
 
-    async addPassword(userName,password) {
-        const queryPassword=addQuery("users",["userName","password"]);
-        const result= await executeQuery(queryPassword,[userName,password])
+    async addPassword(userName,password, userRank) {
+        const queryPassword=addQuery("users",["userName","password","userRank"]);
+        const result= await executeQuery(queryPassword,[userName,password,userRank])
         return result;
     }
 

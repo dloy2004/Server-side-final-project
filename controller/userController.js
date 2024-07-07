@@ -12,11 +12,11 @@ export class UserController {
         try {
             const userService = new UserService();
             const user = await userService.verifyPassword(req.body.userName, req.body.password);
-
+            console.log(user)
             if (user.length > 0) {
                 const token = jwt.sign({ userName: req.body.userName }, SECRET_KEY, { expiresIn: '1h' });
                 res.cookie('token', token, { httpOnly: true });
-                res.status(200).json({ message: 'Login successful', role: user });
+                res.status(200).json({ message: 'Login successful', role: user[0].userRank });
             } else {
                 res.status(401).json({ message: 'Invalid credentials' });
             }
@@ -29,7 +29,7 @@ export class UserController {
     async addPwd(req, res) {
         try {
             const userService = new UserService();
-            await userService.addPassword(req.body.userName, req.body.password);
+            await userService.addPassword(req.body.userName, req.body.password, req.body.userRank);
 
             const token = jwt.sign({ userName: req.body.userName }, SECRET_KEY, { expiresIn: '1h' });
             res.cookie('token', token, { httpOnly: true });
