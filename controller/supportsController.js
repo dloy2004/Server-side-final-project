@@ -6,7 +6,7 @@ export class SupportsController{
     async getSupportsUsingParams(req, res) {
        try {
             const supportsService = new SupportsService();
-            const data = await supportsService.getSupportsByColumnName(req.query);
+            const data = await supportsService.getSupportsByColumnName(req.query);            
             res.status(200).json({ data });
         }
         catch (ex) {

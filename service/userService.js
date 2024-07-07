@@ -1,6 +1,7 @@
 import { executeQuery } from './db.js';
 
-import {addQuery, verifyPasswordQuery,updateQuery} from './queries.js'
+import {addQuery, updateQuery} from './queries.js'
+import { verifyPasswordQuery } from './userQueries.js';
 
 export class UserService {
 

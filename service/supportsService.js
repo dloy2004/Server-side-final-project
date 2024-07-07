@@ -6,7 +6,7 @@ export class SupportsService {
 
     async getSupportsByColumnName(query) {
         const supportsQuery = getDataWithParamsQuery("supports", query);
-        const queryParams = Object.values(query);        
+        const queryParams = Object.values(query);
         const result = await executeQuery(supportsQuery, queryParams);
         return result;
     }
