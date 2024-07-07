@@ -51,7 +51,7 @@ CREATE TABLE `final_project`.`children` (
     ON UPDATE NO ACTION);
 
 -- Creating incomes table - inforamtion about the family incomes.
-CREATE TABLE `final_project`.`incomes` (
+CREATE TABLE `final_project`.`incomes2024` (
   `familyIndex` INT NOT NULL,
   `husbandIncomesSum` INT NOT NULL,
   `wifeIncomesSum` INT NOT NULL,
@@ -90,7 +90,7 @@ CREATE TABLE `final_project`.`property` (
     ON UPDATE NO ACTION);
 
 -- Creating expenses table - inforamtion about the family expenses.
-CREATE TABLE `final_project`.`expenses` (
+CREATE TABLE `final_project`.`expenses2024` (
   `familyIndex` INT NOT NULL,
   `expenseDescription` MEDIUMTEXT NOT NULL,
   `expenseSum` INT NOT NULL,
@@ -148,6 +148,7 @@ CREATE TABLE `final_project`.`debts` (
     CREATE TABLE `final_project`.`users` (
   `userName` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
+  'rank' VARCHAR(45) NOT NULL
   PRIMARY KEY (`userName`, `password`));
 
   --Creating files table - uploaded files, images
