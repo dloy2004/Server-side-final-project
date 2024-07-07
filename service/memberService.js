@@ -14,7 +14,9 @@ export class MemberService {
     async addFamily(familyObj) {
         const memberQuery = addQuery("members", Object.keys(familyObj));
         const result = await executeQuery(memberQuery, Object.values(familyObj));
-        return result;
+        const insertedId = result.insertId;
+        console.log(insertedId)
+        return insertedId;
     }
 
     async saveFile(file, familyIndex) {        
